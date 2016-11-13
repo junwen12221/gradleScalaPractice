@@ -1,0 +1,40 @@
+
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+apply plugin: 'scala'
+apply plugin: 'application'
+
+mainClassName = 'com.sample.Main'
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+tasks.withType(ScalaCompile) {
+	scalaCompileOptions.useAnt = false
+}
+
+dependencies {
+	runtime 'org.scala-lang:scala-compiler:2.11.8'
+	compile 'org.scala-lang:scala-library:2.11.8'
+	testCompile 'junit:junit:4.11'
+	compile group: 'org.scala-lang.modules', name: 'scala-parser-combinators_2.11', version: '1.0.4'
+}
+
+
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '2.2'
+}
+
+/**
+ tasks
+
+ build
+ run
+ test
+ distZip
+ */
